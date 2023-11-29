@@ -1,7 +1,11 @@
 import Image from 'next/image'
-
-export default function Home() {
+function Home() {
   return (
-    <>Hello</>
+    <>
+      Hello
+    </>
   )
 }
+
+
+export default Home
