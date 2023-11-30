@@ -1,11 +1,17 @@
+'use client'
+
 import Image from 'next/image'
+import HomePage from '../components/home/HomePage'
+import { observer } from 'mobx-react-lite';
+
+
 function Home() {
   return (
     <>
-      Hello
+      <HomePage />
     </>
   )
 }
 
 
-export default Home
+export default observer(Home)
