@@ -7,8 +7,6 @@ import { useStore } from '@/store/common/store';
 
 interface IBranch {
   content: string;
-  top: number | undefined;
-  left: number | undefined;
 };
 
 interface FormValues {
@@ -18,10 +16,9 @@ interface FormValues {
 
 
 const Branches: IBranch[] = [
-  { content: 'Price Insights', top: -25, left: -51 },
-  { content: 'Keyword Insights', top: -300, left: 0 },
-  { content: 'Title Suggestions', top: -300, left: 75 },
-  { content: 'Download Products', top: -25, left: 124 },
+  { content: 'Price Insights' },
+  { content: 'Keyword Insights' },
+  { content: 'Download Products' },
 ];
 
 
@@ -45,64 +42,69 @@ const HomePageBody: React.FC = () => {
     } else {
       setEbayURL(values.ebayUrl)
     }
-
-    // Add your form submission logic her
-    resetForm(); // Reset the form after submission if needed
+    resetForm();
   };
 
 
   return (
-    <div className="flex flex-col gap-10 items-center justify-center h-screen bg-gray-200">
-      <div>
-        {/* Central div */}
-        <div className="centerDiv mt-8 p-4 text-gray-600 text-center bg-white rounded-lg shadow-lg">
-          <p className="mb-4">
+    <div className="flex flex-col gap-10 items-start h-screen bg-white">
+
+      <div className='px-20 pt-20 w-full flex flex-row justify-center'>
+        <div className="container">
+          <h2 className="mb-6 text-[35px] sm:text-[50px] xl:text-[65px] aos-init aos-animate font-bold text-[#3d3d3d]">
             Explore eBay and get valuable information, prices,
             and keywords.
-          </p>
-          <p className="font-bold">Your eBay Insights, Instantly!</p>
+          </h2>
+          <div className='flex flex-row gap-2'>
+            {Branches.map((branch: IBranch, index: number) => (
+              <div
+                key={index}
+              >
+                <p className='
+                 rounded-full w-[50px] h-[50px] p-[30px] bg-white flex items-center
+                 justify-center text-center text-black text-[10px] border-[1px] border-primary font-bold
+                 hover:bg-primary hover:text-white cursor-pointer
+                 '
+                >
+                  {branch.content}
+                </p>
+              </div>
+            ))}
+          </div>
 
-          {ebaySearchKeyword}
-          {/* Branch divs */}
-          {Branches.map((branch: IBranch, index: number) => (
-            <div
-              key={index}
-              className={`branchDiv`}
-              style={{ top: `${branch.top}%`, left: `${branch.left}%` }}
-            >
-              <p className='rounded-full w-8 h-8 flex items-center justify-center text-center'>{branch.content}</p>
-            </div>
-          ))}
+          <div className="py-8">
+            <hr className="h-[1px] border-5 border-b border-dashed border-border/50 bg-transparent" />
+          </div>
+        </div>
+        <div className='bg-black h-[max-content] shadow-lg'>
+          <Formik
+            initialValues={{ ebayUrl: '', keywords: '' }}
+            onSubmit={handleSubmit}
+          >
+            <Form className="flex flex-col items-center bg-white p-8 rounded-lg shadow-lg w-[max-content]">
+              <Field
+                type="url"
+                name="ebayUrl"
+                placeholder="Enter eBay Search Result URL"
+                className="p-3 mb-4 rounded-md border border-gray-300 focus:outline-none focus:ring focus:border-blue-300"
+              />
+              <span className="text-gray-500">or</span>
+              <Field
+                type="text"
+                name="keywords"
+                placeholder="Enter Keywords"
+                className="p-3 mt-4 mb-2 rounded-md border border-gray-300 focus:outline-none focus:ring focus:border-blue-300"
+              />
+              <button
+                type="submit"
+                className="mt-6 px-6 py-3 rounded-full bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300 transition duration-300"
+              >
+                Try It Now
+              </button>
+            </Form>
+          </Formik>
         </div>
       </div>
-
-
-      <Formik
-        initialValues={{ ebayUrl: '', keywords: '' }}
-        onSubmit={handleSubmit}
-      >
-        <Form className="flex flex-col items-center  bg-white p-8 rounded-lg shadow-lg">
-          <Field
-            type="url"
-            name="ebayUrl"
-            placeholder="Enter eBay Search Result URL"
-            className="p-3 mb-4 rounded-md border border-gray-300 focus:outline-none focus:ring focus:border-blue-300"
-          />
-          <span className="text-gray-500">or</span>
-          <Field
-            type="text"
-            name="keywords"
-            placeholder="Enter Keywords"
-            className="p-3 mt-4 mb-2 rounded-md border border-gray-300 focus:outline-none focus:ring focus:border-blue-300"
-          />
-          <button
-            type="submit"
-            className="mt-6 px-6 py-3 rounded-full bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300 transition duration-300"
-          >
-            Try It Now
-          </button>
-        </Form>
-      </Formik>
     </div>
   );
 };
