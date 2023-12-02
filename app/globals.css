@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 
+.benefits {
+  background: #ffffff;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid #ccc;
+}
+
+
 
 .centerDiv {
   position: relative;
