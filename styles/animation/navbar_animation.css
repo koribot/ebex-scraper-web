@@ -5,14 +5,14 @@
 
   to {
     width: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--border-bottom-animation-color);
   }
 }
 
 @keyframes shrinkBorder {
   from {
     width: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--border-bottom-animation-color);
 
   }
 
