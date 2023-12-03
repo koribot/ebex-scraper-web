@@ -1,0 +1,44 @@
+@keyframes expandBorder {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+    background-color: var(--border-bottom-animation-color);
+  }
+}
+
+@keyframes shrinkBorder {
+  from {
+    width: 100%;
+    background-color: var(--border-bottom-animation-color);
+
+  }
+
+  to {
+    width: 0;
+    background-color: transparent;
+  }
+}
+
+.border_bottom_animate::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  background-color: transparent;
+  transition: width 0.3s ease;
+  animation: shrinkBorder 0.3s ease forwards;
+
+}
+
+.border_bottom_animate:hover::after {
+  animation: expandBorder 0.3s ease forwards;
+}
+
+.border_bottom_animate:not(:hover)::after {
+  animation: shrinkBorder 0.3s ease forwards;
+}
