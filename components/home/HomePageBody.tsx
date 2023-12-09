@@ -43,7 +43,7 @@ const HomePageBody: React.FC = () => {
 
   const handleSubmit = (values: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
     if (values.keywords.length > 0 && values.ebayUrl.length > 0) {
-      alert("choose only")
+      alert("choose only option")
       return
     }
     if (values.keywords.length > 0) {
