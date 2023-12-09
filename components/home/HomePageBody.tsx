@@ -4,7 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import { useStore } from '@/store/common/store';
-
+import ScrapeSTore from './../../store/data/scrape/store';
+import Link from 'next/link'
+import ListingLists from '../listing/ListingLists';
+import { Card } from 'antd'
 interface IBranch {
   content: string;
 };
@@ -22,15 +25,21 @@ const Branches: IBranch[] = [
 ];
 
 
-
 const HomePageBody: React.FC = () => {
-  const { HomePageStore } = useStore()
+  const { ScrapeStore } = useStore()
   const {
-    ebaySearchKeyword,
-    ebayURL,
+    scrape_observables: {
+      ebaySearchKeyword,
+      ebayURL,
+      listings,
+      isScrapingLoading,
+      exact_url
+    },
     setEbaySearchKeywords,
-    setEbayURL
-  } = HomePageStore
+    performScrape,
+    setEbayURL,
+    resetStore
+  } = ScrapeStore
 
   const handleSubmit = (values: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
     if (values.keywords.length > 0 && values.ebayUrl.length > 0) {
@@ -38,12 +47,20 @@ const HomePageBody: React.FC = () => {
       return
     }
     if (values.keywords.length > 0) {
-      setEbaySearchKeywords(values.keywords)
+      performScrape(values.keywords, 'endpoint_keyword')
     } else {
       setEbayURL(values.ebayUrl)
     }
     resetForm();
   };
+
+
+  useEffect(() => {
+    performScrape("shoes", 'endpoint_keyword')
+    return () => {
+      resetStore()
+    }
+  }, [])
 
 
   return (
@@ -101,10 +118,27 @@ const HomePageBody: React.FC = () => {
               >
                 Try It Now
               </button>
+
             </Form>
           </Formik>
         </div>
+
       </div>
+
+      <Link href='/testpage'>Go to testpage</Link>
+      <a href={exact_url} className="">{exact_url}</a>
+      <Card>
+        <ListingLists
+          Listings={listings}
+          isLoading={isScrapingLoading}
+        />
+      </Card>
+      {/* <div>
+        {listings.map((item: any, index: number) => (
+          // Render the title or use it in some way
+          <div key={item.index}>{item.title}</div>
+        ))}
+      </div> */}
     </div>
   );
 };

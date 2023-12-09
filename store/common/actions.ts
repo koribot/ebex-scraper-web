@@ -1,9 +1,9 @@
-import HomePageStore from "../data/homePage/store"
+import ScrapeStore from "../data/scrape/store"
 
 interface Store {
-  HomePageStore: HomePageStore
+  ScrapeStore: ScrapeStore
 }
 
 export const store: Store = {
-  HomePageStore: new HomePageStore()
+  ScrapeStore: new ScrapeStore()
 }
