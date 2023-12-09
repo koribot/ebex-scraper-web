@@ -63,7 +63,6 @@ const HomePageBody: React.FC = () => {
 
 	return (
 		<div className="flex flex-col gap-10 items-start h-screen bg-white">
-
 			<div className='px-20 pt-20 w-full flex flex-row justify-center'>
 				<div className="container">
 					<h2 className="mb-6 text-[35px] sm:text-[50px] xl:text-[65px] aos-init aos-animate font-bold text-[#3d3d3d]">
