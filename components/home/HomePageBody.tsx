@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import { useStore } from '@/store/common/store';
-import ScrapeSTore from './../../store/data/scrape/store';
 import Link from 'next/link'
 import ListingLists from '../listing/ListingLists';
 import { Card } from 'antd'
@@ -62,7 +61,7 @@ const HomePageBody: React.FC = () => {
 
 
 	return (
-		<div className="flex flex-col gap-10 items-start h-screen bg-white">
+		<div className="flex flex-col gap-10 items-start h-full bg-[transpartent] mb-[50px]">
 			<div className='px-20 pt-20 w-full flex flex-row justify-center'>
 				<div className="container">
 					<h2 className="mb-6 text-[35px] sm:text-[50px] xl:text-[65px] aos-init aos-animate font-bold text-[#3d3d3d]">
@@ -77,7 +76,7 @@ const HomePageBody: React.FC = () => {
 								<p className='
                  rounded-full w-[50px] h-[50px] p-[30px] bg-white flex items-center
                  justify-center text-center text-black text-[10px] border-[1px] border-primary font-bold
-                 hover:bg-primary hover:text-white cursor-pointer
+                 hover:bg-[#36b987] hover:text-white cursor-pointer
                  '
 								>
 									{branch.content}
@@ -119,23 +118,15 @@ const HomePageBody: React.FC = () => {
 						</Form>
 					</Formik>
 				</div>
-
 			</div>
-
-			<Link href='/testpage'>Go to testpage</Link>
-			<a href={exact_url} className="">{exact_url}</a>
-			<Card>
-				<ListingLists
-					Listings={listings}
-					isLoading={isScrapingLoading}
-				/>
-			</Card>
-			{/* <div>
-        {listings.map((item: any, index: number) => (
-          // Render the title or use it in some way
-          <div key={item.index}>{item.title}</div>
-        ))}
-      </div> */}
+			<div className='flex justify-center w-full h-[500px]  p-5'>
+				<Card className='overflow-auto'>
+					<ListingLists
+						Listings={listings}
+						isLoading={isScrapingLoading}
+					/>
+				</Card>
+			</div>
 		</div>
 	);
 };

@@ -2,9 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+
 :root {
   --primary: #36b987;
+  --main-background-color: white;
   --border-bottom-animation-color: rgb(255, 255, 255);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  height: 30px;
+  background-color: #a7aaad50;
+}
+
+body {
+  background-color: var(--main-background-color);
 }
 
 .benefits {
