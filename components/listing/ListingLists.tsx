@@ -22,7 +22,6 @@ const ListingLists = ({ Listings, isLoading }: ListingsProps) => {
    render: (index: number) => {
     return index + 1
    },
-   fixed: 'top'
   },
   {
    title: 'Item Title',

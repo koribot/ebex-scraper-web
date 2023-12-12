@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import HomePage from '../components/home/HomePage'
 import { observer } from 'mobx-react-lite';
 import Navbar from '@/components/navbar/Navbar';
 import HomePageBody from '@/components/home/HomePageBody';
