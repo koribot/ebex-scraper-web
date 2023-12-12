@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  height: 30px;
+  background-color: #a7aaad50;
+}
+
+body {
+  background-color: #b9dbce38;
+}
+
 :root {
   --primary: #36b987;
   --border-bottom-animation-color: rgb(255, 255, 255);
