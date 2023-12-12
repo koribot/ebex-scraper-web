@@ -17,24 +17,26 @@ const ListingLists = ({ Listings, isLoading }: ListingsProps) => {
    title: '#',
    key: 'Title', // Provide a unique key for the column
    dataIndex: 'index',
-   width: '200px',
+   width: '50px',
    sorter: (a: any, b: any) => a.index - b.index,
    render: (index: number) => {
     return index + 1
-   }
+   },
+   fixed: 'top'
   },
   {
    title: 'Item Title',
    key: 'Title', // Provide a unique key for the column
    dataIndex: 'title',
-   width: '200px',
-   sorter: (a: any, b: any) => a.title.length - b.title.length
+   width: '500px',
+   sorter: (a: any, b: any) => a.title.length - b.title.length,
   },
   {
    title: 'Price',
    key: 'Price',
    dataIndex: 'price',
-   sorter: (a: any, b: any) => a.price - b.price
+   sorter: (a: any, b: any) => a.price - b.price,
+   width: '50px',
   },
   {
    title: 'Image',
@@ -47,7 +49,8 @@ const ListingLists = ({ Listings, isLoading }: ListingsProps) => {
      width={150}
      height={150}
     />
-   }
+   },
+   width: '200px'
   },
   {
    title: 'Item Link',
@@ -63,6 +66,7 @@ const ListingLists = ({ Listings, isLoading }: ListingsProps) => {
  return (
   <>
    <Table
+    sticky={{ offsetHeader: 0 }}
     dataSource={listingsWithKeys}
     columns={columns}
     loading={isLoading}
