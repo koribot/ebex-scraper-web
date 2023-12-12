@@ -77,7 +77,7 @@ const HomePageBody: React.FC = () => {
 								<p className='
                  rounded-full w-[50px] h-[50px] p-[30px] bg-white flex items-center
                  justify-center text-center text-black text-[10px] border-[1px] border-primary font-bold
-                 hover:bg-primary hover:text-white cursor-pointer
+                 hover:bg-[#36b987] hover:text-white cursor-pointer
                  '
 								>
 									{branch.content}
